@@ -18,11 +18,11 @@
 - **Real-time Balance Deduction**: Instant balance updates
 - **Minimum Bet Validation**: $1.00 minimum
 
-# 🚀 HYPIQ - AI-Powered Trading Platform
+# 🚀 HYPIQ - Advanced Trading Platform
 
 <div align="center">
   <img src="public/hypiq-logo.jpeg" alt="HYPIQ Logo" width="200"/>
-  <h3>Revolutionary AI-Powered Trading Platform</h3>
+  <h3>Revolutionary Advanced Trading Platform</h3>
   <p>
     <a href="https://hypiq.xyz">🌐 Live Demo</a> •
     <a href="#features">✨ Features</a> •
@@ -35,7 +35,7 @@
 
 ## 🎯 Overview
 
-**HYPIQ** is a cutting-edge AI-powered trading platform that democratizes professional trading strategies through advanced machine learning algorithms and intuitive user experience. Our platform combines real-time market analysis, automated trading, and comprehensive portfolio management in one seamless interface.
+**HYPIQ** is a cutting-edge trading platform that democratizes professional trading strategies through advanced algorithms and intuitive user experience. Our platform combines real-time market analysis, automated trading, and comprehensive portfolio management in one seamless interface.
 
 **🌐 Live Site:** [https://hypiq.xyz](https://hypiq.xyz)  
 **📧 Contact:** hello@hypiq.xyz
@@ -44,10 +44,10 @@
 
 ## ✨ Features
 
-### 🤖 **AI-Powered Trading Engine**
-- **Smart Algorithms**: Advanced ML models for market pattern recognition
+### 🤖 **Advanced Trading Engine**
+- **Smart Algorithms**: Advanced models for market pattern recognition
 - **Automated Risk Management**: Dynamic stop-loss and take-profit systems
-- **Portfolio Optimization**: AI-driven asset allocation and rebalancing
+- **Portfolio Optimization**: Intelligent asset allocation and rebalancing
 - **Sentiment Analysis**: Real-time news and social media integration
 
 ### 📊 **Advanced Analytics Dashboard**
