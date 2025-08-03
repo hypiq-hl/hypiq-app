@@ -38,25 +38,13 @@ const sendWelcomeEmail = async (email: string): Promise<void> => {
           <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #e5e7eb;">We'll keep you updated on our progress and notify you as soon as HYPIQ is <strong style="color: #60a5fa;">ready for early access</strong>.</p>
         </div>
         
-        <div style="margin-bottom: 32px;">
-          <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 600; text-align: center;">What to expect:</h3>
-          <div style="display: grid; gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 8px; height: 8px; background: #60a5fa; border-radius: 50%; flex-shrink: 0;"></div>
-              <span style="font-size: 14px; color: #e5e7eb;">Advanced trading insights</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 8px; height: 8px; background: #a78bfa; border-radius: 50%; flex-shrink: 0;"></div>
-              <span style="font-size: 14px; color: #e5e7eb;">Real-time market analysis</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 8px; height: 8px; background: #60a5fa; border-radius: 50%; flex-shrink: 0;"></div>
-              <span style="font-size: 14px; color: #e5e7eb;">Exclusive early access</span>
-            </div>
-          </div>
-        </div>
+
         
         <div style="text-align: center; padding-top: 32px; border-top: 1px solid rgba(96, 165, 250, 0.2);">
+          <div style="margin-bottom: 20px;">
+            <a href="https://hypiq.xyz" style="display: inline-block; margin: 0 12px; padding: 8px 16px; background: rgba(96, 165, 250, 0.1); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 8px; color: #60a5fa; text-decoration: none; font-size: 14px; font-weight: 500;">🌐 hypiq.xyz</a>
+            <a href="https://x.com/hypiq_hl" style="display: inline-block; margin: 0 12px; padding: 8px 16px; background: rgba(96, 165, 250, 0.1); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 8px; color: #60a5fa; text-decoration: none; font-size: 14px; font-weight: 500;">🐦 @hypiq_hl</a>
+          </div>
           <p style="margin: 0 0 8px 0; font-size: 14px; color: #9ca3af;">Best regards,</p>
           <p style="margin: 0; font-size: 14px; font-weight: 600; color: #60a5fa;">The HYPIQ Team</p>
         </div>
