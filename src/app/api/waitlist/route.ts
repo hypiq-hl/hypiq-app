@@ -34,8 +34,8 @@ const sendWelcomeEmail = async (email: string): Promise<void> => {
         
         <div style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1)); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 16px; padding: 32px; margin-bottom: 32px;">
           <h2 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 600;">Welcome aboard! 🎉</h2>
-          <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #e5e7eb;">Thank you for joining the HYPIQ waitlist! You're now part of an exclusive community that will get early access to the future of AI-powered trading.</p>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #e5e7eb;">We'll keep you updated on our progress and notify you as soon as HYPIQ is ready for early access.</p>
+          <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #e5e7eb;">Thank you for joining the HYPIQ waitlist!</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #e5e7eb;">We'll keep you updated on our progress and notify you as soon as HYPIQ is <strong style="color: #60a5fa;">ready for early access</strong>.</p>
         </div>
         
         <div style="margin-bottom: 32px;">
@@ -43,7 +43,7 @@ const sendWelcomeEmail = async (email: string): Promise<void> => {
           <div style="display: grid; gap: 16px;">
             <div style="display: flex; align-items: center; gap: 12px;">
               <div style="width: 8px; height: 8px; background: #60a5fa; border-radius: 50%; flex-shrink: 0;"></div>
-              <span style="font-size: 14px; color: #e5e7eb;">AI-powered trading insights</span>
+              <span style="font-size: 14px; color: #e5e7eb;">Advanced trading insights</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
               <div style="width: 8px; height: 8px; background: #a78bfa; border-radius: 50%; flex-shrink: 0;"></div>
