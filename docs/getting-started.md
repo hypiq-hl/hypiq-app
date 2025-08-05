@@ -2,6 +2,8 @@
 
 HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.
 
+HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.
+
 ## Quick Start​
 
 ### 1\. Join the Waitlist​
