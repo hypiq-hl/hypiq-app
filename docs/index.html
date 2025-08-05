@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to HYPIQ 🐋 | Documentation</title>
-    <meta name="description" content="HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.">
+    <title>HYPIQ Documentation</title>
+    <meta name="description" content="Advanced trading platform for cryptocurrency markets">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             /* HYPIQ Brand Colors */
@@ -18,20 +18,15 @@
             --hypiq-text-secondary: #e5e7eb;
             --hypiq-text-muted: #9ca3af;
             --hypiq-border: #ffffff1a;
-            --hypiq-gradient: linear-gradient(135deg, #60a5fa, #a78bfa);
+            --hypiq-success: #10b981;
+            --hypiq-primary: #60a5fa;
+            
+            /* Layout */
+            --sidebar-width: 280px;
+            --header-height: 64px;
             
             /* Fonts */
-            --font-family: "Inter", system-ui, -apple-system, sans-serif;
-            
-            /* Spacing */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
-            
-            /* Transitions */
-            --transition: 0.2s ease-in-out;
+            --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         * {
@@ -45,382 +40,728 @@
             background-color: var(--hypiq-background);
             color: var(--hypiq-text);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: var(--hypiq-background);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--hypiq-accent);
-            padding: var(--spacing-md) var(--spacing-lg);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--hypiq-text);
-            text-decoration: none;
-            gap: 12px;
-        }
-
-        .navbar-brand::before {
-            content: "🐋";
-            font-size: 2rem;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: var(--spacing-lg);
-            list-style: none;
-        }
-
-        .navbar-links a {
-            color: var(--hypiq-text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition);
-        }
-
-        .navbar-links a:hover {
-            color: var(--hypiq-text);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem var(--spacing-lg);
-            text-align: center;
-            position: relative;
             overflow: hidden;
-            border-bottom: 1px solid var(--hypiq-accent);
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
+        /* Header */
+        .header {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, #1a21254d 0%, #12191d33 50%, transparent 100%);
+            height: var(--header-height);
+            background: var(--hypiq-card);
+            border-bottom: 1px solid var(--hypiq-accent);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--hypiq-text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .header-logo::before {
+            content: "🐋";
+            font-size: 24px;
+            filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.3));
+        }
+
+        .header-tabs {
+            display: flex;
+            gap: 2px;
+            margin-left: 32px;
+        }
+
+        .header-tab {
+            padding: 8px 16px;
+            color: var(--hypiq-text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .header-tab.active {
+            color: var(--hypiq-text);
+            background: var(--hypiq-background);
+        }
+
+        .header-tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background: var(--hypiq-primary);
+            border-radius: 1px;
+        }
+
+        .header-tab:hover {
+            color: var(--hypiq-text);
+            background: var(--hypiq-accent);
+        }
+
+        .search-container {
+            position: relative;
+            margin-left: auto;
+            margin-right: 16px;
+        }
+
+        .search-input {
+            width: 280px;
+            height: 36px;
+            background: var(--hypiq-background);
+            border: 1px solid var(--hypiq-accent);
+            border-radius: 8px;
+            padding: 0 16px 0 40px;
+            color: var(--hypiq-text);
+            font-size: 14px;
+            font-family: var(--font-family);
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--hypiq-primary);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: var(--hypiq-text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hypiq-text-muted);
+            font-size: 16px;
             pointer-events: none;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        .search-shortcut {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: var(--hypiq-text-muted);
+            background: var(--hypiq-accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
-        .hero-title {
-            font-size: 3.5rem;
+        /* Layout */
+        .layout {
+            display: flex;
+            height: 100vh;
+            padding-top: var(--header-height);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--hypiq-card);
+            border-right: 1px solid var(--hypiq-accent);
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-content {
+            padding: 24px 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 32px;
+        }
+
+        .sidebar-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--hypiq-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 24px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav-item {
+            position: relative;
+        }
+
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            padding: 8px 24px;
+            color: var(--hypiq-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav-link:hover {
+            color: var(--hypiq-text);
+            background: var(--hypiq-background);
+        }
+
+        .sidebar-nav-link.active {
+            color: var(--hypiq-text);
+            background: var(--hypiq-background);
+            border-left-color: var(--hypiq-primary);
+        }
+
+        .sidebar-nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-nav-item.expandable .sidebar-nav-link::after {
+            content: "›";
+            margin-left: auto;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-nav-item.expanded .sidebar-nav-link::after {
+            transform: rotate(90deg);
+        }
+
+        .sidebar-subnav {
+            list-style: none;
+            display: none;
+            background: var(--hypiq-background);
+        }
+
+        .sidebar-nav-item.expanded .sidebar-subnav {
+            display: block;
+        }
+
+        .sidebar-subnav-link {
+            display: block;
+            padding: 6px 24px 6px 56px;
+            color: var(--hypiq-text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-subnav-link:hover {
+            color: var(--hypiq-text);
+        }
+
+        .sidebar-subnav-link.active {
+            color: var(--hypiq-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: var(--hypiq-background);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 32px;
+        }
+
+        .content-header {
+            margin-bottom: 32px;
+        }
+
+        .content-title {
+            font-size: 32px;
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: var(--hypiq-gradient);
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--hypiq-primary), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
+        .content-description {
+            font-size: 18px;
             color: var(--hypiq-text-secondary);
-            margin-bottom: 2rem;
             line-height: 1.6;
         }
 
-        /* Navigation Grid */
-        .nav-grid {
+        .brand-kit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--spacing-xl) var(--spacing-lg);
+            gap: 16px;
+            margin-top: 32px;
         }
 
-        .nav-card {
+        .brand-kit-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
             background: var(--hypiq-card);
             border: 1px solid var(--hypiq-accent);
             border-radius: 12px;
-            padding: var(--spacing-lg);
-            text-decoration: none;
-            color: inherit;
-            transition: all var(--transition);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
         }
 
-        .nav-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2) 50%, transparent);
-        }
-
-        .nav-card:hover {
+        .brand-kit-item:hover {
             background: var(--hypiq-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transform: translateY(-1px);
         }
 
-        .nav-card-emoji {
-            font-size: 2.5rem;
-            margin-bottom: var(--spacing-md);
-            display: block;
-        }
-
-        .nav-card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: var(--spacing-sm);
-            color: var(--hypiq-text);
-        }
-
-        .nav-card-desc {
-            color: var(--hypiq-text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Footer */
-        .footer {
+        .brand-kit-icon {
+            width: 40px;
+            height: 40px;
             background: var(--hypiq-background);
-            border-top: 2px solid var(--hypiq-border);
-            padding: var(--spacing-xl) var(--spacing-lg);
-            text-align: center;
-            position: relative;
-        }
-
-        .footer::before {
-            content: "";
-            position: absolute;
-            top: -1px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
+            border-radius: 8px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
-            flex-wrap: wrap;
+            margin-right: 16px;
+            font-size: 18px;
         }
 
-        .footer-links a {
+        .brand-kit-info {
+            flex: 1;
+        }
+
+        .brand-kit-name {
+            font-weight: 600;
+            color: var(--hypiq-text);
+            margin-bottom: 4px;
+        }
+
+        .brand-kit-type {
+            font-size: 13px;
+            color: var(--hypiq-text-muted);
+        }
+
+        .brand-kit-size {
+            font-size: 12px;
+            color: var(--hypiq-text-muted);
+            background: var(--hypiq-background);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .copy-button {
+            background: none;
+            border: 1px solid var(--hypiq-accent);
+            color: var(--hypiq-text-muted);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 12px;
+        }
+
+        .copy-button:hover {
+            border-color: var(--hypiq-primary);
+            color: var(--hypiq-primary);
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 48px;
+            padding: 24px 0;
+            border-top: 1px solid var(--hypiq-accent);
+        }
+
+        .page-nav-link {
+            display: flex;
+            align-items: center;
             color: var(--hypiq-text-secondary);
             text-decoration: none;
-            transition: color var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
-        .footer-links a:hover {
+        .page-nav-link:hover {
             color: var(--hypiq-text);
         }
 
-        .footer-copyright {
+        .page-nav-link.prev::before {
+            content: "←";
+            margin-right: 8px;
+        }
+
+        .page-nav-link.next::after {
+            content: "→";
+            margin-left: 8px;
+        }
+
+        .last-updated {
+            font-size: 13px;
             color: var(--hypiq-text-muted);
-            font-size: 0.9rem;
+            margin-top: 32px;
+        }
+
+        .powered-by {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--hypiq-text-muted);
+            text-decoration: none;
+        }
+
+        .powered-by::before {
+            content: "📖";
+            font-size: 16px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: var(--header-height);
+                height: calc(100vh - var(--header-height));
+                transition: left 0.3s ease;
+                z-index: 100;
             }
 
-            .navbar-links {
-                display: none;
+            .sidebar.open {
+                left: 0;
             }
 
-            .nav-grid {
-                grid-template-columns: 1fr;
-                padding: var(--spacing-lg);
+            .search-input {
+                width: 200px;
             }
 
-            .hero {
-                padding: var(--spacing-xl) var(--spacing-md);
-            }
-        }
-
-        /* Scroll animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .content-container {
+                padding: 24px 16px;
             }
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+        /* Custom Scrollbar */
+        .sidebar::-webkit-scrollbar,
+        .main-content::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .nav-card:nth-child(1) { animation-delay: 0.1s; }
-        .nav-card:nth-child(2) { animation-delay: 0.2s; }
-        .nav-card:nth-child(3) { animation-delay: 0.3s; }
-        .nav-card:nth-child(4) { animation-delay: 0.4s; }
-        .nav-card:nth-child(5) { animation-delay: 0.5s; }
-        .nav-card:nth-child(6) { animation-delay: 0.6s; }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .sidebar::-webkit-scrollbar-track,
+        .main-content::-webkit-scrollbar-track {
+            background: var(--hypiq-card);
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--hypiq-background);
-        }
-
-        ::-webkit-scrollbar-thumb {
+        .sidebar::-webkit-scrollbar-thumb,
+        .main-content::-webkit-scrollbar-thumb {
             background: var(--hypiq-accent);
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
+        .sidebar::-webkit-scrollbar-thumb:hover,
+        .main-content::-webkit-scrollbar-thumb:hover {
             background: var(--hypiq-text-muted);
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="/" class="navbar-brand">HYPIQ</a>
-            <ul class="navbar-links">
-                <li><a href="https://hypiq.xyz" target="_blank">Platform</a></li>
-                <li><a href="https://x.com/hypiq_hl" target="_blank">Twitter</a></li>
-                <li><a href="https://github.com/hypiq-hl" target="_blank">GitHub</a></li>
-            </ul>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="header-logo">HYPIQ Docs</a>
+        
+        <nav class="header-tabs">
+            <a href="#" class="header-tab active">HYPIQ Docs</a>
+            <a href="#" class="header-tab">Support</a>
+        </nav>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search...">
+            <span class="search-shortcut">⌘ K</span>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to HYPIQ 🐋</h1>
-            <p class="hero-subtitle">
-                HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.
-            </p>
-        </div>
-    </section>
+    <!-- Layout -->
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <nav class="sidebar-section">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-nav-item">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">ℹ️</span>
+                                About HYPIQ
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🚀</span>
+                                Onboarding
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">⚙️</span>
+                                HyperCore
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🔧</span>
+                                HyperEVM
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">💡</span>
+                                HYPIQ Improvement Proposals (HIPs)
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">📈</span>
+                                Trading
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">✅</span>
+                                Validators
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🎁</span>
+                                Referrals
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🏆</span>
+                                Points
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">📊</span>
+                                Historical data
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">⚠️</span>
+                                Risks
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🐛</span>
+                                Bug bounty program
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🔍</span>
+                                Audits
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item">
+                            <a href="#" class="sidebar-nav-link active">
+                                <span class="sidebar-nav-icon">🎨</span>
+                                Brand kit
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
-    <!-- Navigation Grid -->
-    <section class="nav-grid">
-        <a href="getting-started.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">🚀</span>
-            <h2 class="nav-card-title">Getting Started</h2>
-            <p class="nav-card-desc">Quick start guide to get you up and running with HYPIQ</p>
-        </a>
-
-        <a href="platform/overview.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">⚙️</span>
-            <h2 class="nav-card-title">Platform Overview</h2>
-            <p class="nav-card-desc">Learn about HYPIQ's core architecture and features</p>
-        </a>
-
-        <a href="platform/features.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">✨</span>
-            <h2 class="nav-card-title">Platform Features</h2>
-            <p class="nav-card-desc">Explore the advanced trading tools and capabilities</p>
-        </a>
-
-        <a href="api/authentication.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">🔐</span>
-            <h2 class="nav-card-title">API Documentation</h2>
-            <p class="nav-card-desc">Integration guides and API authentication</p>
-        </a>
-
-        <a href="guides/quick-start.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">📚</span>
-            <h2 class="nav-card-title">Quick Start Guide</h2>
-            <p class="nav-card-desc">Step-by-step guides for common tasks</p>
-        </a>
-
-        <a href="faq.html" class="nav-card fade-in-up">
-            <span class="nav-card-emoji">❓</span>
-            <h2 class="nav-card-title">FAQ</h2>
-            <p class="nav-card-desc">Frequently asked questions and troubleshooting</p>
-        </a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://hypiq.xyz" target="_blank">Visit HYPIQ Platform</a>
-                <a href="https://x.com/hypiq_hl" target="_blank">Twitter</a>
-                <a href="https://github.com/hypiq-hl" target="_blank">GitHub</a>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">For Developers</h3>
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🔌</span>
+                                API
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🔧</span>
+                                HyperEVM
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item expandable">
+                            <a href="#" class="sidebar-nav-link">
+                                <span class="sidebar-nav-icon">🌐</span>
+                                Nodes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p class="footer-copyright">
-                Copyright © 2025 HYPIQ. All rights reserved.
-            </p>
-        </div>
-    </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-container">
+                <header class="content-header">
+                    <h1 class="content-title">Brand kit</h1>
+                    <button class="copy-button">📋 Copy</button>
+                </header>
+
+                <div class="brand-kit-grid">
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">HYPIQ logo PNG format.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">194KB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">HYPIQ logo SVG format.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">16KB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">🖼️</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">HYPIQ banner.jpg</div>
+                            <div class="brand-kit-type">image</div>
+                        </div>
+                        <div class="brand-kit-size">437KB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">Hypurr.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">16MB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">Hypurr 2.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">11MB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">Hypurr 3.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">7MB</div>
+                    </div>
+
+                    <div class="brand-kit-item">
+                        <div class="brand-kit-icon">📦</div>
+                        <div class="brand-kit-info">
+                            <div class="brand-kit-name">EVM, Core, Powered by HYPIQ.zip</div>
+                            <div class="brand-kit-type">archive</div>
+                        </div>
+                        <div class="brand-kit-size">42KB</div>
+                    </div>
+                </div>
+
+                <nav class="page-navigation">
+                    <a href="#" class="page-nav-link prev">
+                        <div>
+                            <div style="font-size: 12px; color: var(--hypiq-text-muted);">Previous</div>
+                            <div>Audits</div>
+                        </div>
+                    </a>
+                    <a href="#" class="page-nav-link next">
+                        <div style="text-align: right;">
+                            <div style="font-size: 12px; color: var(--hypiq-text-muted);">Next</div>
+                            <div>API</div>
+                        </div>
+                    </a>
+                </nav>
+
+                <div class="last-updated">
+                    Last updated 2 months ago
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Powered by GitBook -->
+    <a href="#" class="powered-by">Powered by GitBook</a>
 
     <script>
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('focus', function() {
+            this.placeholder = 'Search documentation...';
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        document.querySelector('.search-input').addEventListener('blur', function() {
+            this.placeholder = 'Search...';
+        });
+
+        // Keyboard shortcut for search
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                document.querySelector('.search-input').focus();
+            }
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-nav-item.expandable .sidebar-nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const item = this.parentElement;
+                item.classList.toggle('expanded');
             });
-        }, observerOptions);
-
-        // Initially hide cards for animation
-        document.querySelectorAll('.fade-in-up').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(card);
         });
 
-        // Trigger animations after page load
-        window.addEventListener('load', () => {
+        // Copy button functionality
+        document.querySelector('.copy-button').addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.textContent = '✅ Copied!';
             setTimeout(() => {
-                document.querySelectorAll('.fade-in-up').forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }, 200);
+                this.textContent = originalText;
+            }, 2000);
         });
+
+        // Mobile sidebar toggle (if needed)
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        }
     </script>
 </body>
 </html>
