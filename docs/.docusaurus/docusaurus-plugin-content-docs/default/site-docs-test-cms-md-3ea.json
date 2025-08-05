@@ -1,0 +1,20 @@
+{
+  "id": "test-cms",
+  "title": "Test CMS Document",
+  "description": "This is a test document to verify CMS can detect docs files.",
+  "source": "@site/docs/test-cms.md",
+  "sourceDirName": ".",
+  "slug": "/test-cms",
+  "permalink": "/test-cms",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/hypiq-hl/hypiq-docs/tree/main/docs/test-cms.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 99,
+  "frontMatter": {
+    "id": "test-cms",
+    "title": "Test CMS Document",
+    "sidebar_position": 99
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "index",
+  "title": "Welcome to HYPIQ",
+  "description": "HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.",
+  "source": "@site/docs/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/hypiq-hl/hypiq-docs/tree/main/docs/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "id": "index",
+    "title": "Welcome to HYPIQ",
+    "slug": "/",
+    "sidebar_position": 0
+  }
+}

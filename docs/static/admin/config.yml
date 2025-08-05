@@ -1,0 +1,126 @@
+backend:
+  name: github
+  repo: hypiq-hl/hypiq-website
+  branch: main
+  auth_type: pkce
+  base_url: https://docs.hypiq.finance
+  
+# Local development backend (comment out for production)
+# backend:
+#   name: test-repo
+# local_backend: true
+  
+media_folder: docs/static/img
+public_folder: /docs/img
+site_url: https://docs.hypiq.finance
+logo_url: https://docs.hypiq.finance/img/logo.svg
+
+collections:
+  # Main Documentation
+  - name: docs
+    label: "📚 Documentation"
+    folder: docs/docs
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: string, required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # Platform Documentation
+  - name: platform
+    label: "🚀 Platform Docs"
+    folder: docs/docs/platform
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # Trading Guides
+  - name: guides
+    label: "📖 Trading Guides"
+    folder: docs/docs/guides
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Difficulty, name: difficulty, widget: select, options: ["Beginner", "Intermediate", "Advanced"], required: false}
+      - {label: Duration, name: duration, widget: string, required: false, hint: "Estimated reading time"}
+      - {label: Tags, name: tags, widget: list, required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # FAQ
+  - name: faq
+    label: "❓ FAQ"
+    folder: docs/docs/faq
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Question, name: title, widget: string}
+      - {label: Category, name: category, widget: select, options: ["General", "Trading", "Account", "Technical", "Security"], required: false}
+      - {label: Priority, name: priority, widget: number, required: false, hint: "Higher numbers appear first"}
+      - {label: Answer, name: body, widget: markdown}
+
+  # Blog Posts
+  - name: blog
+    label: "📝 Blog"
+    folder: blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Slug, name: slug, widget: string, required: false}
+      - {label: Author, name: authors, widget: string, default: "HYPIQ Team"}
+      - {label: Date, name: date, widget: datetime}
+      - {label: Tags, name: tags, widget: list, required: false}
+      - {label: Featured Image, name: image, widget: image, required: false}
+      - {label: Hide Table of Contents, name: hide_table_of_contents, widget: boolean, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # Site Settings
+  - name: settings
+    label: "⚙️ Site Settings"
+    files:
+      - label: "Site Configuration"
+        name: site_config
+        file: docusaurus.config.ts
+        fields:
+          - {label: Site Title, name: title, widget: string}
+          - {label: Tagline, name: tagline, widget: string}
+          - {label: Site URL, name: url, widget: string}
+          - {label: Base URL, name: baseUrl, widget: string}
+          - {label: Organization Name, name: organizationName, widget: string}
+          - {label: Project Name, name: projectName, widget: string}
+      
+      - label: "Navbar Configuration"
+        name: navbar
+        file: src/components/navbar-config.json
+        fields:
+          - label: Logo
+            name: logo
+            widget: object
+            fields:
+              - {label: Alt Text, name: alt, widget: string}
+              - {label: Source, name: src, widget: string}
+          - label: Menu Items
+            name: items
+            widget: list
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Position, name: position, widget: select, options: ["left", "right"]}
+              - {label: Link, name: href, widget: string, required: false}
+              - {label: Type, name: type, widget: string, required: false}

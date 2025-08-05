@@ -1,0 +1,20 @@
+{
+  "id": "guides/quick-start",
+  "title": "Quick Start Guide",
+  "description": "Get started with HYPIQ trading in minutes",
+  "source": "@site/docs/guides/quick-start.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/quick-start",
+  "permalink": "/guides/quick-start",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "quick-start",
+    "title": "Quick Start Guide",
+    "description": "Get started with HYPIQ trading in minutes",
+    "sidebar_position": 1
+  }
+}

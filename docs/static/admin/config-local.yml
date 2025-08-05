@@ -1,0 +1,91 @@
+# 🧪 Local Development CMS Config
+backend:
+  name: test-repo
+  
+local_backend: true
+  
+media_folder: static/img
+public_folder: /img
+
+site_url: http://localhost:3000
+logo_url: http://localhost:3000/img/logo.svg
+
+collections:
+  # Documentation
+  - name: docs
+    label: "📚 Documentation"
+    folder: docs
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # Platform Documentation
+  - name: platform
+    label: "🚀 Platform Docs"
+    folder: docs/platform
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # Trading Guides
+  - name: guides
+    label: "📖 Trading Guides"
+    folder: docs/guides
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Difficulty, name: difficulty, widget: select, options: ["Beginner", "Intermediate", "Advanced"], required: false}
+      - {label: Duration, name: duration, widget: string, required: false, hint: "Estimated reading time"}
+      - {label: Tags, name: tags, widget: list, required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  # FAQ
+  - name: faq
+    label: "❓ FAQ"
+    folder: docs/faq
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: ID, name: id, widget: string}
+      - {label: Question, name: title, widget: string}
+      - {label: Category, name: category, widget: select, options: ["General", "Trading", "Technical", "Account"], required: false}
+      - {label: Priority, name: priority, widget: select, options: ["High", "Medium", "Low"], required: false}
+      - {label: Sidebar Position, name: sidebar_position, widget: number, required: false}
+      - {label: Answer, name: body, widget: markdown}
+
+  # Blog Posts
+  - name: blog
+    label: "📝 Blog"
+    folder: blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: string}
+      - {label: Authors, name: authors, widget: list}
+      - {label: Tags, name: tags, widget: list, required: false}
+      - {label: Body, name: body, widget: markdown}

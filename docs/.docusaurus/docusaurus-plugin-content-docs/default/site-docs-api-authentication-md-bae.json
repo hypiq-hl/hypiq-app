@@ -1,0 +1,20 @@
+{
+  "id": "api/authentication",
+  "title": "Authentication",
+  "description": "API authentication methods for HYPIQ",
+  "source": "@site/docs/api/authentication.md",
+  "sourceDirName": "api",
+  "slug": "/api/authentication",
+  "permalink": "/api/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "authentication",
+    "title": "Authentication",
+    "description": "API authentication methods for HYPIQ",
+    "sidebar_position": 1
+  }
+}
