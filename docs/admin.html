@@ -38,6 +38,111 @@
             min-height: 100vh;
         }
 
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-logo {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .login-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-primary), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: var(--font-family);
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px 24px;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 16px;
+        }
+
+        .login-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .admin-content {
+            display: none;
+            padding: 20px;
+        }
+
         .admin-header {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border-subtle);
@@ -45,6 +150,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin: -20px -20px 20px -20px;
         }
 
         .admin-logo {
@@ -58,6 +164,22 @@
         .admin-logo::before {
             content: "💎";
             font-size: 24px;
+        }
+
+        .logout-btn {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--bg-primary);
+            color: var(--text-primary);
         }
 
         .admin-container {
@@ -165,53 +287,6 @@
             color: var(--text-primary);
         }
 
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #dc2626;
-        }
-
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .quick-action {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .quick-action:hover {
-            background: var(--bg-tertiary);
-            transform: translateY(-2px);
-        }
-
-        .quick-action-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .quick-action-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .quick-action-desc {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-
         .instructions {
             background: var(--bg-secondary);
             border: 1px solid var(--border-light);
@@ -256,11 +331,21 @@
             background: var(--accent-primary);
         }
 
-        .status-draft {
-            background: var(--warning);
+        .security-info {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
+            .login-box {
+                padding: 32px 24px;
+            }
+            
             .admin-container {
                 padding: 16px;
             }
@@ -268,183 +353,218 @@
             .card-actions {
                 flex-direction: column;
             }
-            
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
-    <header class="admin-header">
-        <div class="admin-logo">HYPIQ Docs Admin</div>
-        <div style="color: var(--text-muted); font-size: 14px;">
-            <span class="status-indicator status-live"></span>
-            Live Site Active
-        </div>
-    </header>
-
-    <div class="admin-container">
-        <h1 class="admin-title">Content Management</h1>
-        <p class="admin-subtitle">
-            Manage your HYPIQ documentation content. Changes are automatically deployed to the live site.
-        </p>
-
-        <!-- Quick Actions -->
-        <div class="quick-actions">
-            <div class="quick-action">
-                <span class="quick-action-icon">📝</span>
-                <h3 class="quick-action-title">Edit on GitHub</h3>
-                <p class="quick-action-desc">Direct editing through GitHub's web interface</p>
-                <a href="https://github.com/hypiq-hl/hypiq-website/tree/main/docs" target="_blank" class="btn btn-primary">
-                    Open GitHub Editor
-                </a>
-            </div>
-
-            <div class="quick-action">
-                <span class="quick-action-icon">👁️</span>
-                <h3 class="quick-action-title">Preview Live Site</h3>
-                <p class="quick-action-desc">View the current live documentation</p>
-                <a href="/" target="_blank" class="btn btn-secondary">
-                    View Live Docs
-                </a>
-            </div>
-
-            <div class="quick-action">
-                <span class="quick-action-icon">📊</span>
-                <h3 class="quick-action-title">Analytics</h3>
-                <p class="quick-action-desc">View documentation traffic and usage</p>
-                <button class="btn btn-secondary" onclick="alert('Analytics integration can be added here')">
-                    View Analytics
-                </button>
-            </div>
-        </div>
-
-        <!-- Content Sections -->
-        <div class="content-sections">
-            <div class="content-card">
-                <div class="card-header">
-                    <h2 class="card-title">About HYPIQ</h2>
-                </div>
-                <div class="card-meta">
-                    📄 Main page • Last updated: Today • Status: Live
-                </div>
-                <div class="card-content">
-                    Main landing page introducing HYPIQ platform, features, and technical overview.
-                </div>
-                <div class="card-actions">
-                    <a href="https://github.com/hypiq-hl/hypiq-website/edit/main/docs/index.html" target="_blank" class="btn btn-primary">
-                        ✏️ Edit Content
-                    </a>
-                    <a href="/" target="_blank" class="btn btn-secondary">
-                        👁️ Preview
-                    </a>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="card-header">
-                    <h2 class="card-title">Platform Guide</h2>
-                </div>
-                <div class="card-meta">
-                    📖 Documentation section • Status: Needs Content
-                </div>
-                <div class="card-content">
-                    Comprehensive guide to HYPIQ platform features, tools, and capabilities.
-                </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="createNewPage('platform-guide')">
-                        ➕ Create Page
-                    </button>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="card-header">
-                    <h2 class="card-title">API Documentation</h2>
-                </div>
-                <div class="card-meta">
-                    🔌 API docs • Status: Needs Content
-                </div>
-                <div class="card-content">
-                    Complete API reference, authentication, endpoints, and integration examples.
-                </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="createNewPage('api-docs')">
-                        ➕ Create Page
-                    </button>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="card-header">
-                    <h2 class="card-title">Trading Guides</h2>
-                </div>
-                <div class="card-meta">
-                    📈 User guides • Status: Needs Content
-                </div>
-                <div class="card-content">
-                    Step-by-step guides for using HYPIQ trading features and best practices.
-                </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="createNewPage('trading-guides')">
-                        ➕ Create Page
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Instructions -->
-        <div class="instructions">
-            <h3>📋 How to Edit Content</h3>
-            <ol>
-                <li><strong>GitHub Method (Recommended):</strong> Click "Edit Content" buttons above to edit directly on GitHub</li>
-                <li><strong>File Structure:</strong> All content is in the <code>docs/</code> folder of the repository</li>
-                <li><strong>Auto-Deploy:</strong> Changes are automatically deployed to the live site within 2-3 minutes</li>
-                <li><strong>HTML Editing:</strong> Content is in HTML format with inline CSS styling</li>
-                <li><strong>Preview:</strong> Use "Preview" buttons to see how changes look on the live site</li>
-            </ol>
+    <!-- Login Form -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">🔐</div>
+            <h1 class="login-title">HYPIQ Admin</h1>
+            <p class="login-subtitle">Content Management System</p>
             
-            <h3 style="margin-top: 24px;">🛠️ Technical Details</h3>
-            <ol>
-                <li><strong>Repository:</strong> <code>https://github.com/hypiq-hl/hypiq-website</code></li>
-                <li><strong>Live URL:</strong> <code>https://docs.hypiq.finance</code></li>
-                <li><strong>Deployment:</strong> GitHub Pages with automatic builds</li>
-                <li><strong>Content Format:</strong> HTML with embedded CSS for styling</li>
-                <li><strong>Mobile:</strong> Fully responsive design that adapts to all devices</li>
-            </ol>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                
+                <div id="errorMessage" class="error-message">
+                    Invalid credentials. Please try again.
+                </div>
+                
+                <button type="submit" class="login-btn">Access Admin Panel</button>
+            </form>
+            
+            <div class="security-info">
+                🔒 This admin panel is protected. Only authorized HYPIQ team members can access content editing features.
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Content (Hidden by default) -->
+    <div id="adminContent" class="admin-content">
+        <header class="admin-header">
+            <div class="admin-logo">HYPIQ Docs Admin</div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="color: var(--text-muted); font-size: 14px;">
+                    <span class="status-indicator status-live"></span>
+                    Live Site Active
+                </div>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <h1 class="admin-title">Content Management</h1>
+            <p class="admin-subtitle">
+                Manage your HYPIQ documentation content. Changes are automatically deployed to the live site.
+            </p>
+
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">About HYPIQ</h2>
+                    </div>
+                    <div class="card-meta">
+                        📄 Main page • Last updated: Today • Status: Live
+                    </div>
+                    <div class="card-content">
+                        Main landing page introducing HYPIQ platform, features, and technical overview.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/hypiq-hl/hypiq-website/edit/main/docs/index.html" target="_blank" class="btn btn-primary">
+                            ✏️ Edit Content
+                        </a>
+                        <a href="/" target="_blank" class="btn btn-secondary">
+                            👁️ Preview
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Platform Guide</h2>
+                    </div>
+                    <div class="card-meta">
+                        📖 Documentation section • Status: Needs Content
+                    </div>
+                    <div class="card-content">
+                        Comprehensive guide to HYPIQ platform features, tools, and capabilities.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=platform-guide.html" target="_blank" class="btn btn-primary">
+                            ➕ Create Page
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">API Documentation</h2>
+                    </div>
+                    <div class="card-meta">
+                        🔌 API docs • Status: Needs Content
+                    </div>
+                    <div class="card-content">
+                        Complete API reference, authentication, endpoints, and integration examples.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=api-documentation.html" target="_blank" class="btn btn-primary">
+                            ➕ Create Page
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Trading Guides</h2>
+                    </div>
+                    <div class="card-meta">
+                        📈 User guides • Status: Needs Content
+                    </div>
+                    <div class="card-content">
+                        Step-by-step guides for using HYPIQ trading features and best practices.
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=trading-guides.html" target="_blank" class="btn btn-primary">
+                            ➕ Create Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>📋 How to Edit Content</h3>
+                <ol>
+                    <li><strong>GitHub Method (Recommended):</strong> Click "Edit Content" buttons above to edit directly on GitHub</li>
+                    <li><strong>File Structure:</strong> All content is in the <code>docs/</code> folder of the repository</li>
+                    <li><strong>Auto-Deploy:</strong> Changes are automatically deployed to the live site within 2-3 minutes</li>
+                    <li><strong>HTML Editing:</strong> Content is in HTML format with inline CSS styling</li>
+                    <li><strong>Preview:</strong> Use "Preview" buttons to see how changes look on the live site</li>
+                </ol>
+                
+                <h3 style="margin-top: 24px;">🛠️ Technical Details</h3>
+                <ol>
+                    <li><strong>Repository:</strong> <code>https://github.com/hypiq-hl/hypiq-website</code></li>
+                    <li><strong>Live URL:</strong> <code>https://docs.hypiq.finance</code></li>
+                    <li><strong>Deployment:</strong> GitHub Pages with automatic builds</li>
+                    <li><strong>Content Format:</strong> HTML with embedded CSS for styling</li>
+                    <li><strong>Mobile:</strong> Fully responsive design that adapts to all devices</li>
+                </ol>
+            </div>
         </div>
     </div>
 
     <script>
-        function createNewPage(type) {
-            const templates = {
-                'platform-guide': 'https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=platform-guide.html&value=' + encodeURIComponent(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Platform Guide | HYPIQ Documentation</title>
-    <!-- Add your content here -->
-</head>
-<body>
-    <h1>Platform Guide</h1>
-    <p>Your content goes here...</p>
-</body>
-</html>`),
-                'api-docs': 'https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=api-documentation.html',
-                'trading-guides': 'https://github.com/hypiq-hl/hypiq-website/new/main/docs?filename=trading-guides.html'
-            };
-            
-            if (templates[type]) {
-                window.open(templates[type], '_blank');
-            }
+        // Simple authentication system
+        const VALID_CREDENTIALS = {
+            'hypiq-admin': 'hypiq2024!',
+            'content-editor': 'edit123!',
+            'team-member': 'team2024!'
+        };
+
+        // Check if already logged in
+        if (localStorage.getItem('hypiq-admin-logged-in') === 'true') {
+            showAdminPanel();
         }
 
-        // Auto-refresh status every 30 seconds
-        setInterval(() => {
-            // You can add logic here to check deployment status
-            console.log('Checking deployment status...');
-        }, 30000);
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (VALID_CREDENTIALS[username] && VALID_CREDENTIALS[username] === password) {
+                // Successful login
+                localStorage.setItem('hypiq-admin-logged-in', 'true');
+                localStorage.setItem('hypiq-admin-user', username);
+                showAdminPanel();
+            } else {
+                // Failed login
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('hypiq-admin-logged-in');
+            localStorage.removeItem('hypiq-admin-user');
+            showLoginForm();
+        });
+
+        function showAdminPanel() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('adminContent').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Auto-logout after 4 hours
+        setTimeout(() => {
+            if (localStorage.getItem('hypiq-admin-logged-in') === 'true') {
+                alert('Session expired. Please log in again.');
+                localStorage.removeItem('hypiq-admin-logged-in');
+                localStorage.removeItem('hypiq-admin-user');
+                showLoginForm();
+            }
+        }, 4 * 60 * 60 * 1000); // 4 hours
     </script>
 </body>
 </html>
