@@ -25,7 +25,7 @@
             
             /* Layout */
             --sidebar-width: 280px;
-            --header-height: 64px;
+            --header-height: 96px;
             --toc-width: 240px;
             
             /* Typography */
@@ -63,8 +63,20 @@
             border-bottom: 1px solid var(--border-subtle);
             z-index: 1000;
             display: flex;
+            flex-direction: column;
+            padding: 12px 24px 8px 24px;
+        }
+
+        .header-top {
+            display: flex;
             align-items: center;
-            padding: 0 24px;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .header-bottom {
+            display: flex;
+            align-items: center;
         }
 
         .header-brand {
@@ -79,8 +91,8 @@
 
         .header-brand::before {
             content: "";
-            width: 24px;
-            height: 24px;
+            width: 36px;
+            height: 36px;
             background-image: url('HYPIQ-logo-white.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -90,7 +102,6 @@
 
         .header-tabs {
             display: flex;
-            margin-left: 40px;
             gap: 4px;
         }
 
@@ -504,17 +515,21 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <a href="/" class="header-brand">HYPIQ Docs</a>
+        <div class="header-top">
+            <a href="/" class="header-brand">HYPIQ Docs</a>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search...">
+                <span class="search-shortcut">⌘ K</span>
+            </div>
+        </div>
         
-        <nav class="header-tabs">
-            <a href="#" class="header-tab active">HYPIQ Docs</a>
-            <a href="#" class="header-tab">Support</a>
-        </nav>
-
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" placeholder="Search...">
-            <span class="search-shortcut">⌘ K</span>
+        <div class="header-bottom">
+            <nav class="header-tabs">
+                <a href="#" class="header-tab active">HYPIQ Docs</a>
+                <a href="#" class="header-tab">Support</a>
+            </nav>
         </div>
     </header>
 
