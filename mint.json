@@ -1,0 +1,74 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "HYPIQ Documentation",
+  "logo": {
+    "dark": "/docs/HYPIQ-logo-white.png",
+    "light": "/docs/HYPIQ-logo-white.png"
+  },
+  "favicon": "/docs/HYPIQ-logo-white.png",
+  "colors": {
+    "primary": "#4ade80",
+    "light": "#4ade80",
+    "dark": "#22c55e",
+    "anchors": {
+      "from": "#4ade80",
+      "to": "#22c55e"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@hypiq.finance"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://hypiq.finance"
+  },
+  "tabs": [
+    {
+      "name": "Documentation",
+      "url": "introduction"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "HYPIQ Platform",
+      "icon": "rocket",
+      "url": "https://hypiq.finance"
+    },
+    {
+      "name": "Support",
+      "icon": "life-ring",
+      "url": "mailto:support@hypiq.finance"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "getting-started"
+      ]
+    },
+    {
+      "group": "Platform",
+      "pages": [
+        "platform/overview"
+      ]
+    },
+    {
+      "group": "Resources",
+      "pages": [
+        "faq",
+        "brand-kit"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/hypiq_finance",
+    "linkedin": "https://linkedin.com/company/hypiq"
+  },
+  "backgroundImage": "/docs/background.png",
+  "theme": "quill"
+}
