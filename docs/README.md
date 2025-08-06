@@ -1,40 +1,67 @@
-# Welcome to HYPIQ 🐋
+# HYPIQ Documentation
 
-HYPIQ is an advanced trading platform that provides intelligent market analysis and trading tools for cryptocurrency markets.
+This repository contains the documentation for HYPIQ trading platform.
 
-## Quick Start​
+## 📝 For Content Editors
 
-### 1\. Join the Waitlist​
+### Quick Start
+1. **Admin Panel**: Visit [/admin.html](./admin.html) for content management interface
+2. **Direct Editing**: Edit files directly on GitHub web interface
+3. **Auto-Deploy**: Changes automatically go live within 2-3 minutes
 
-Visit [hypiq.xyz](https://hypiq.xyz) to join our exclusive waitlist and get early access to the platform.
+### Content Structure
+```
+docs/
+├── index.html          # Main documentation page
+├── admin.html          # Content management interface  
+├── content/            # Markdown content files
+│   └── about.md       # About page content
+└── README.md          # This file
+```
 
-### 2\. Platform Features​
+### Editing Methods
 
-  * **Advanced Trading Tools** : Professional-grade trading interface
-  * **Real-time Market Analysis** : Live market data and insights
-  * **Risk Management** : Built-in risk assessment tools
-  * **Portfolio Tracking** : Comprehensive portfolio management
+#### Method 1: GitHub Web Editor (Recommended)
+1. Navigate to any file in the `docs/` folder
+2. Click the pencil icon (✏️) to edit
+3. Make your changes
+4. Scroll down and click "Commit changes"
+5. Your changes will be live in 2-3 minutes
 
-### 3\. Getting Early Access​
+#### Method 2: Admin Panel
+1. Visit `/admin.html` 
+2. Click "Edit Content" buttons
+3. Opens GitHub editor for each section
 
-Once you're on the waitlist, you'll receive:
+#### Method 3: Markdown Files
+1. Edit files in the `content/` folder
+2. Use Markdown syntax for formatting
+3. Convert to HTML when ready to deploy
 
-  * **Priority Access** : Be among the first to use HYPIQ
-  * **Beta Features** : Test new features before public release
-  * **Community Access** : Join our exclusive trading community
+## 🎨 Design System
 
-## What's Next?​
+The documentation uses HYPIQ's brand colors and styling:
+- **Background**: Dark green theme (#0a1a15)
+- **Accent**: Bright green (#4ade80)  
+- **Typography**: Inter font family
+- **Layout**: Minimalistic with subtle overlays
 
-  * Explore our [Platform Guide](/platform/overview) to learn about features
-  * Check out the [API Reference](/api/authentication) for developers
-  * Read our [Trading Guides](/guides/quick-start) for best practices
+## 🚀 Technical Details
 
-## Need Help?​
+- **Framework**: Static HTML with embedded CSS
+- **Hosting**: GitHub Pages
+- **Domain**: docs.hypiq.finance
+- **Build**: Automatic deployment on git push
+- **Mobile**: Fully responsive design
 
-  * Check our [FAQ](/faq) for common questions
-  * Follow us on [Twitter](https://x.com/hypiq_hl) for updates
-  * Visit our main site at [hypiq.xyz](https://hypiq.xyz)
+## 📞 Support
 
-* * *
+For technical issues with the documentation system:
+- Create an issue in this repository
+- Contact the development team
+- Check the admin panel for status updates
 
-_Ready to revolutionize your trading experience? Join HYPIQ today!_
+---
+
+**Live Site**: [docs.hypiq.finance](https://docs.hypiq.finance)  
+**Repository**: [github.com/hypiq-hl/hypiq-website](https://github.com/hypiq-hl/hypiq-website)
