@@ -5,8 +5,13 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    unoptimized: true,
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    unoptimized: false,
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'via.placeholder.com' },
+      { protocol: 'https', hostname: 'picsum.photos' },
+    ],
+    formats: ['image/avif', 'image/webp'],
   },
   // Add webpack configuration for potential blockchain integrations
   webpack: (config, { dev, isServer }) => {

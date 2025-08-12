@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export function MarketCardSkeleton() {
   return (
-    <Card className="p-4 bg-white/5 backdrop-blur-sm border-white/10">
+    <Card className="p-4 bg-white/10 border border-white/20 text-white">
       {/* Header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3 flex-1">

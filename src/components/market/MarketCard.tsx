@@ -63,115 +63,83 @@ export function MarketCard({ market }: MarketCardProps) {
 
   return (
     <>
-      <Card className={`p-4 hover:border-accent-foreground/30 transition-all duration-500 cursor-pointer group bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 hover:scale-[1.02] hover:shadow-xl ${cardHoverColor} relative overflow-hidden`}>
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        {/* Position type indicator */}
-        <div className={`absolute top-2 right-2 w-2 h-2 rounded-full ${isLong ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
-
-        {/* Wallet connection indicator */}
-        {!isConnected && (
-          <div className="absolute top-2 left-2">
-            <Wallet className="h-4 w-4 text-yellow-400 animate-pulse" />
-          </div>
-        )}
-
-        {/* Header with whale info */}
-        <div className="flex items-start justify-between mb-3 relative z-10">
-          <div className="flex items-center gap-3 flex-1">
-            <Avatar className="h-8 w-8 group-hover:scale-110 transition-transform duration-300 ring-2 ring-white/20 group-hover:ring-white/40">
-              <AvatarFallback className="text-lg group-hover:scale-110 transition-transform">{market.creator.avatar}</AvatarFallback>
-            </Avatar>
-            <div className="flex-1 min-w-0">
-              <p 
-                className="text-sm font-medium truncate cursor-pointer hover:text-accent-foreground transition-colors group-hover:text-white" 
-                title={market.creator.address}
-              >
-                {market.creator.name}
-              </p>
-              <p className="text-xs text-muted-foreground group-hover:text-white/70 transition-colors flex items-center gap-1">
-                <Zap className="h-3 w-3" />
-                {market.position.type} {market.position.amount}${market.position.currency}
-              </p>
+      <Card className="bg-white/10 border border-white/20 rounded-lg p-4 hover:shadow-md hover:bg-white/15 transition-all duration-300 cursor-pointer group text-white">
+        {/* Header with position info - Kalshi style */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Avatar className="h-6 w-6">
+                <AvatarFallback className="text-sm bg-white/20 text-white">{market.creator.avatar}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="text-sm font-medium text-white">{market.creator.name}</p>
+                <p className="text-xs text-white/70">
+                  {market.position.type} {market.position.amount} {market.position.currency}
+                </p>
+              </div>
             </div>
+          </div>
+          <div className={`px-2 py-1 rounded text-xs font-medium ${isLong ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+            {isLong ? 'LONG' : 'SHORT'}
           </div>
         </div>
 
-        {/* Question */}
-        <h3 className="text-sm font-medium mb-3 group-hover:text-white transition-colors flex items-center gap-1">
-          <Timer className="h-3 w-3 animate-pulse" />
-          Position outcome {market.timeLeft}
+        {/* Question - Dark theme */}
+        <h3 className="text-base font-medium text-white mb-4 leading-tight">
+          Will this position close in profit?
         </h3>
 
-        {/* Betting Options */}
-        <div className="grid grid-cols-2 gap-2 mb-4 relative z-10">
+        {/* Betting Options - Dark theme Kalshi style */}
+        <div className="grid grid-cols-2 gap-2 mb-3">
           <Button
             variant="outline"
             onClick={() => handleBet('yes')}
-            className="h-auto p-3 flex flex-col items-center gap-1 bg-green-500/10 border-green-500/20 hover:bg-green-500/30 hover:border-green-500/40 hover:scale-105 transition-all duration-300 group/profit"
+            className="h-12 p-3 flex flex-col items-center justify-center gap-1 border border-white/20 hover:border-kalshi-accent hover:bg-kalshi-accent/20 transition-all group/yes bg-kalshi-accent/10"
           >
-            <span className="text-xs text-muted-foreground group-hover/profit:text-green-200">
-              {!isConnected ? (
-                <div className="flex items-center gap-1">
-                  <Wallet className="h-3 w-3" />
-                  Connect
-                </div>
-              ) : (
-                'Profit'
-              )}
-            </span>
-            <span className="text-lg font-bold text-green-400 group-hover/profit:text-green-300 group-hover/profit:scale-110 transition-all">{yesPercentage.toFixed(0)}¢</span>
+            <span className="text-xs font-medium text-white/70 group-hover/yes:text-kalshi-accent">YES</span>
+            <span className="text-lg font-bold text-kalshi-accent">{yesPercentage.toFixed(0)}¢</span>
           </Button>
           
           <Button
             variant="outline"
             onClick={() => handleBet('no')}
-            className="h-auto p-3 flex flex-col items-center gap-1 bg-red-500/10 border-red-500/20 hover:bg-red-500/30 hover:border-red-500/40 hover:scale-105 transition-all duration-300 group/loss"
+            className="h-12 p-3 flex flex-col items-center justify-center gap-1 border border-white/20 hover:border-red-500 hover:bg-red-500/20 transition-all group/no bg-red-500/10"
           >
-            <span className="text-xs text-muted-foreground group-hover/loss:text-red-200">
-              {!isConnected ? (
-                <div className="flex items-center gap-1">
-                  <Wallet className="h-3 w-3" />
-                  Connect
-                </div>
-              ) : (
-                'Loss'
-              )}
-            </span>
-            <span className="text-lg font-bold text-red-400 group-hover/loss:text-red-300 group-hover/loss:scale-110 transition-all">{noPercentage.toFixed(0)}¢</span>
+            <span className="text-xs font-medium text-white/70 group-hover/no:text-red-400">NO</span>
+            <span className="text-lg font-bold text-red-400">{noPercentage.toFixed(0)}¢</span>
           </Button>
         </div>
 
-        {/* Enhanced Progress Bar */}
-        <div className="relative mb-3 group-hover:scale-105 transition-transform duration-300">
-          <Progress value={yesPercentage} className="h-4 bg-white/10" />
-          <div className="absolute inset-0 flex items-center justify-between px-2">
-            <span className="text-sm font-bold text-white drop-shadow-sm animate-pulse">{yesPercentage.toFixed(0)}%</span>
-            <span className="text-sm font-bold text-red-400 drop-shadow-sm animate-pulse">{noPercentage.toFixed(0)}%</span>
+        {/* Volume and participants - Dark theme */}
+        <div className="flex items-center justify-between text-sm text-white/70 pt-3 border-t border-white/20">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1">
+              <DollarSign className="h-3 w-3" />
+              {formatLargeNumber(market.totalVolume)}
+            </span>
+            <span className="flex items-center gap-1">
+              <Users className="h-3 w-3" />
+              {market.participants}
+            </span>
           </div>
-          {/* Animated progress glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-red-500/20 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-        </div>
-
-        {/* Enhanced Footer Stats */}
-        <div className="flex items-center justify-between text-xs text-muted-foreground group-hover:text-white/80 transition-colors relative z-10">
-          <div className="flex items-center gap-1 hover:text-blue-400 transition-colors cursor-pointer">
-            <DollarSign className="h-3 w-3 animate-bounce" />
-            {formatLargeNumber(market.totalVolume)}
-          </div>
-          <div className="flex items-center gap-1 hover:text-green-400 transition-colors cursor-pointer">
-            <Users className="h-3 w-3 animate-pulse" />
-            {market.participants}
-          </div>
-          <div className="flex items-center gap-1 hover:text-purple-400 transition-colors cursor-pointer">
-            <TrendingUp className="h-3 w-3 animate-pulse" />
-            Vol
+          <div className="flex items-center gap-1 text-xs">
+            <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+            <span>Live</span>
           </div>
         </div>
 
-        {/* Subtle hover effect overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        {/* Price movement indicator - Dark theme */}
+        <div className="mt-3 flex items-center justify-between">
+          <div className="flex-1 bg-white/20 rounded-full h-1 overflow-hidden">
+            <div 
+              className="h-full bg-kalshi-accent transition-all duration-500" 
+              style={{ width: `${yesPercentage}%` }}
+            />
+          </div>
+          <span className="ml-3 text-xs font-medium text-white/70">
+            {yesPercentage.toFixed(0)}% / {noPercentage.toFixed(0)}%
+          </span>
+        </div>
       </Card>
 
       <BettingModal

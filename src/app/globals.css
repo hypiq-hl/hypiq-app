@@ -75,6 +75,22 @@
   .whale-gradient {
     @apply bg-gradient-to-r from-whale-dark via-whale to-whale-light;
   }
+
+  /* Marquee animations */
+  .animate-marquee {
+    animation: marquee var(--duration,40s) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration,40s) linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap,1rem))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap,1rem))); }
+  }
   
   .profit-gradient {
     @apply bg-gradient-to-r from-profit-dark via-profit to-profit-light;
@@ -86,6 +102,27 @@
 
   .trading-card {
     @apply border border-border rounded-lg bg-card/50 backdrop-blur-sm;
+  }
+
+  /* Shimmer effect for "WHALE MARKETS" chip */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: shimmer-move 2.5s infinite;
+  }
+  @keyframes shimmer-move {
+    0% { left: -150%; }
+    60% { left: 150%; }
+    100% { left: 150%; }
   }
 
   .bet-button {
@@ -108,6 +145,13 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
   }
 }
 
