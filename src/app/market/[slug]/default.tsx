@@ -48,18 +48,17 @@ export default function MarketDetailPage() {
   const slug = params?.slug || ''
   const [tradeType, setTradeType] = useState<'buy' | 'sell'>('buy')
 
-  const market = useMemo(() => findMarketBySlug(slug), [slug])
+  // Compute market without a hook to allow safe early return before any hooks
+  const market = findMarketBySlug(slug)
   
-  if (!market) {
-    return (
-      <div className="min-h-screen bg-[#0e241f] text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-2">Market Not Found</h1>
-          <p className="text-white/60">The market you're looking for doesn't exist.</p>
-        </div>
+  const notFoundView = (
+    <div className="min-h-screen bg-[#0e241f] text-white flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-2">Market Not Found</h1>
+        <p className="text-white/60">The market you&rsquo;re looking for doesn&rsquo;t exist.</p>
       </div>
-    )
-  }
+    </div>
+  )
 
   const chartData = useMemo(() => {
     if (!market) return []
@@ -121,8 +120,9 @@ export default function MarketDetailPage() {
     lastTrade: { price: 24, direction: 'up' }
   }), [])
 
-  const marketRules = useMemo(() => generateMarketRules(market.title), [market.title])
-  const timeline = useMemo(() => inferTimelineFromTitle(market.title), [market.title])
+  const marketTitle = market?.title ?? ''
+  const marketRules = useMemo(() => generateMarketRules(marketTitle), [marketTitle])
+  const timeline = useMemo(() => inferTimelineFromTitle(marketTitle), [marketTitle])
 
   // Coin logo detection based on market title (same logic as cards)
   const getLogoKeyFromTitle = (title: string): string | null => {
@@ -136,8 +136,8 @@ export default function MarketDetailPage() {
     if (/\bdoge\b/.test(t)) return 'doge'
     return null
   }
-  const logoKey = useMemo(() => getLogoKeyFromTitle(market.title), [market.title])
-  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market.imageUrl || '/hypiq-logo.jpeg')
+  const logoKey = useMemo(() => getLogoKeyFromTitle(marketTitle), [marketTitle])
+  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market?.imageUrl || '/hypiq-logo.jpeg')
 
   // Sticky title bar behavior: shrink on scroll and align sidebar start to chart
   const HEADER_OFFSET = 104
@@ -174,7 +174,9 @@ export default function MarketDetailPage() {
     }
   }, [isCondensed])
 
-  return (
+  return !market ? (
+    notFoundView
+  ) : (
     <div className="min-h-screen bg-[#0e241f] text-white">
       <Navigation />
       <main className="container mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">

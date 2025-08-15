@@ -60,7 +60,8 @@ export default function MultipleChoiceMarketPage() {
   const [selectedSide, setSelectedSide] = useState<'yes' | 'no' | null>(null)
   const [expandedOption, setExpandedOption] = useState<number | null>(null)
 
-  const market = useMemo(() => findMarketBySlug(slug), [slug])
+  // Compute market without a hook; avoid conditional hooks by rendering a notFound view later
+  const market = findMarketBySlug(slug)
   
   // Determine coin for live price
   const coinName = useMemo(() => {
@@ -74,19 +75,17 @@ export default function MultipleChoiceMarketPage() {
   const { priceData, isConnected, symbol } = useHyperliquidPrice(coinName)
 
   // Rules and timeline (used in header and details)
-  const marketRules = useMemo(() => generateMarketRules(market.title), [market.title])
-  const timeline = useMemo(() => inferTimelineFromTitle(market.title), [market.title])
+  const marketRules = useMemo(() => generateMarketRules(market?.title ?? ''), [market?.title])
+  const timeline = useMemo(() => inferTimelineFromTitle(market?.title ?? ''), [market?.title])
   
-  if (!market) {
-    return (
-      <div className="min-h-screen bg-[#0e241f] text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-2">Market Not Found</h1>
-          <p className="text-white/60">The market you're looking for doesn't exist.</p>
-        </div>
+  const notFoundView = (
+    <div className="min-h-screen bg-[#0e241f] text-white flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-2">Market Not Found</h1>
+        <p className="text-white/60">The market you&rsquo;re looking for doesn&rsquo;t exist.</p>
       </div>
-    )
-  }
+    </div>
+  )
 
   // Mock multiple choice options data (like Ethereum price ranges)
   const priceOptions: PriceOption[] = useMemo(() => [
@@ -133,8 +132,8 @@ export default function MultipleChoiceMarketPage() {
     if (/(hyperliquid|hype)\b/.test(t)) return 'hype'
     return null
   }
-  const logoKey = useMemo(() => getLogoKeyFromTitle(market.title), [market.title])
-  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market.imageUrl || '/hypiq-logo.jpeg')
+  const logoKey = useMemo(() => (market ? getLogoKeyFromTitle(market.title) : null), [market])
+  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market?.imageUrl || '/hypiq-logo.jpeg')
 
   // Sticky title bar behavior
   const HEADER_OFFSET = 104
@@ -170,7 +169,9 @@ export default function MultipleChoiceMarketPage() {
     }
   }, [isCondensed])
 
-  return (
+  return !market ? (
+    notFoundView
+  ) : (
     <div className="min-h-screen bg-[#0e241f] text-white">
       <Navigation />
       <main className="container mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">

@@ -42,7 +42,7 @@ export default function MarketRouter() {
       <div className="min-h-screen bg-[#0e241f] text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Market Not Found</h1>
-          <p className="text-white/60">The market you're looking for doesn't exist.</p>
+          <p className="text-white/60">The market you&rsquo;re looking for doesn&rsquo;t exist.</p>
         </div>
       </div>
     )

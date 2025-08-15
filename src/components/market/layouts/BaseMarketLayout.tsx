@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useEffect, useRef, useState } from 'react'
+import { useMemo, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import { Card } from '@/components/ui/card'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
@@ -220,7 +220,10 @@ export function BaseMarketLayout({
                 <div className="flex items-center gap-3 py-2">
                   <span className="relative flex h-3 w-3 items-center justify-center">
                     <span className="h-3 w-3 rounded-full" style={{ backgroundColor: betType.color.primary }}></span>
-                    <span className="absolute inset-0 rounded-full ring-2" style={{ ringColor: `${betType.color.primary}40` }}></span>
+                    <span
+                      className="absolute inset-0 rounded-full ring-2"
+                      style={{ '--tw-ring-color': `${betType.color.primary}40` } as CSSProperties}
+                    ></span>
                   </span>
                   <div>
                     <div className="text-sm font-medium text-white leading-tight">Market open</div>
