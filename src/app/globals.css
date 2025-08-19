@@ -69,7 +69,7 @@
   }
 }
 
-/* Custom styles for HypurrMarket */
+/* Custom styles for HYPIQ Prediction Markets */
 @layer components {
   .whale-gradient {
     @apply bg-gradient-to-r from-whale-dark via-whale to-whale-light;
