@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HYPIQ - Prediction Markets',
-  description: 'Join the waitlist for early access to HYPIQ prediction markets. predict/earn.',
+  description: 'Advanced prediction markets platform. Trade on whale positions and crypto outcomes. predict/earn.',
   icons: {
     icon: '/HYPIQ-logo-white-vector.svg',
     apple: '/HYPIQ-logo-white-vector.svg',
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>HYPIQ - Prediction Markets</title>
-        <meta name="description" content="Join the waitlist for early access to HYPIQ prediction markets. predict/earn." />
+        <meta name="description" content="Advanced prediction markets platform. Trade on whale positions and crypto outcomes. predict/earn." />
         <link rel="icon" href="/HYPIQ-logo-white-vector.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/HYPIQ-logo-white-vector.svg" />
       </head>

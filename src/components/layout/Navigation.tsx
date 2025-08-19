@@ -11,7 +11,7 @@ import { useWallet } from '@/contexts/WalletContext'
 export function Navigation() {
   const { isConnected, address, balance, connect, disconnect } = useWallet()
   const pathname = usePathname()
-  const isWhaleMarkets = pathname?.startsWith('/whale-markets') || pathname?.startsWith('/market/')
+  const isWhaleMarkets = pathname === '/' || pathname?.startsWith('/market/')
 
   const formatAddress = (addr: string) => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`
@@ -34,17 +34,7 @@ export function Navigation() {
               <span className="text-xl font-bold text-white">HYPIQ</span>
             </Link>
 
-            {/* Thin vertical separator between brand and nav */}
-            <div className="hidden md:block h-8 w-px bg-white/30 rounded" />
 
-            <div className="hidden md:flex items-center space-x-5">
-              <Link href="/prod" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
-                Event Markets
-              </Link>
-              <Link href="/whale-markets" className="text-sm text-white/90 hover:text-white transition-colors">
-                <span className="relative shimmer inline-block px-1 rounded">🐋 Whale Markets</span>
-              </Link>
-            </div>
           </div>
 
           {/* Center - (Search removed per spec) */}
@@ -127,7 +117,7 @@ export function Navigation() {
                   onClick={() => {
                     const params = new URLSearchParams(window.location.search)
                     params.set('category', key)
-                    const path = '/whale-markets'
+                    const path = '/'
                     const url = `${path}?${params.toString()}`
                     window.location.assign(url)
                   }}
