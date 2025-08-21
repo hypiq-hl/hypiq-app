@@ -40,48 +40,86 @@ const mockEvents: EventMarket[] = dataWhaleMarkets as unknown as EventMarket[]
 
 export function WhaleMarketCard({ market }: { market: EventMarket }) {
   const slug = buildSlug(market.title)
+  
+  // Extract position info from title
+  const getPositionInfo = (title: string) => {
+    const isLong = /LONG/i.test(title)
+    const isShort = /SHORT/i.test(title)
+    const amount = title.match(/(\d+M\$)/)?.[1] || ''
+    const coin = title.match(/(BITCOIN|ETH|HYPE|BTC)/i)?.[1]?.toUpperCase() || ''
+    
+    return { isLong, isShort, amount, coin }
+  }
+  
+  const positionInfo = getPositionInfo(market.title)
   const topTwo = useMemo(() => {
     const sorted = [...market.options].sort((a,b) => b.percent - a.percent)
     return sorted.slice(0, 2)
   }, [market.options])
+  
   return (
     <Link href={`/market/${slug}`} className="block">
       <Card className="relative overflow-hidden bg-white/10 border border-white/20 rounded-lg p-4 text-white hover:bg-white/15 transition h-full">
-      <div className="flex items-center gap-3 mb-3">
-        <Image src={market.imageUrl || (getLogoKeyFromTitle(market.title) ? `/coin-logos/${getLogoKeyFromTitle(market.title)}.png` : 'https://picsum.photos/seed/placeholder/96/96')} alt="event" width={40} height={40} className="w-10 h-10 rounded-md object-cover" />
-        <h3 className="text-base font-semibold line-clamp-2 min-h-[2.75rem] leading-snug">{market.title}</h3>
-      </div>
+        {/* Header with coin and position type */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <Image 
+              src={market.imageUrl || (getLogoKeyFromTitle(market.title) ? `/coin-logos/${getLogoKeyFromTitle(market.title)}.png` : 'https://picsum.photos/seed/placeholder/96/96')} 
+              alt="coin" 
+              width={40} 
+              height={40} 
+              className="w-10 h-10 rounded-md object-cover" 
+            />
+            <div>
+              <div className="text-base font-bold">{positionInfo.coin} {positionInfo.amount}</div>
+              <div className="text-xs text-white/70">Whale Position</div>
+            </div>
+          </div>
+          <div className={`px-2 py-1 rounded text-xs font-bold ${
+            positionInfo.isLong 
+              ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+              : 'bg-red-500/20 text-red-400 border border-red-500/30'
+          }`}>
+            {positionInfo.isLong ? 'LONG' : 'SHORT'}
+          </div>
+        </div>
 
-      <div className="space-y-3">
-        {topTwo.map((opt, idx) => {
-          const isPrimary = idx === 0
-          return (
-            <div key={opt.name} className="flex items-center gap-3">
-              <span className="text-sm text-white/90 w-28 shrink-0 truncate">{opt.name}</span>
-              <div className="flex-1">
-                <div className="flex items-center gap-3">
-                  <Progress
-                    value={opt.percent}
-                    className={`h-2 bg-white/10 ${isPrimary ? ' [&>div]:from-emerald-500 [&>div]:to-emerald-400' : ' [&>div]:from-red-500 [&>div]:to-rose-400'}`}
-                  />
-                  <span className="text-sm font-semibold tabular-nums w-10 text-right">{opt.percent}%</span>
+        {/* Will Profit/Will Lose options */}
+        <div className="space-y-3">
+          {topTwo.map((opt, idx) => {
+            const isProfit = opt.name.includes('Profit')
+            return (
+              <div key={opt.name} className="flex items-center gap-3">
+                <div className="flex items-center gap-2 w-20 shrink-0">
+                  <span className={`text-lg font-bold ${isProfit ? 'text-green-400' : 'text-red-400'}`}>
+                    {isProfit ? '+' : '-'}
+                  </span>
+                  <span className="text-sm text-white/90">{isProfit ? 'Profit' : 'Lose'}</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <Progress
+                      value={opt.percent}
+                      className={`h-2 bg-white/10 ${isProfit ? ' [&>div]:from-emerald-500 [&>div]:to-emerald-400' : ' [&>div]:from-red-500 [&>div]:to-rose-400'}`}
+                    />
+                    <span className="text-sm font-semibold tabular-nums w-10 text-right">{opt.percent}%</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Button size="sm" className="h-7 px-3 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300">Yes</Button>
+                  <Button size="sm" className="h-7 px-3 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-300">No</Button>
                 </div>
               </div>
-              <div className="flex items-center gap-1">
-                <Button size="sm" className="h-7 px-3 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300">Yes</Button>
-                <Button size="sm" className="h-7 px-3 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-300">No</Button>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
 
-      <div className="mt-4 text-xs text-white/60">
-        ${market.volume.toLocaleString()}
-      </div>
+        <div className="mt-4 text-xs text-white/60">
+          ${market.volume.toLocaleString()}
+        </div>
 
-      {/* Frosted overlay with SOON ribbon for cards 4–9 (index >= 3 in grid) */}
-      {/* We cannot access the index here directly, so we add a data attribute from parent map below. */}
+        {/* Frosted overlay with SOON ribbon for cards 4–9 (index >= 3 in grid) */}
+        {/* We cannot access the index here directly, so we add a data attribute from parent map below. */}
       </Card>
     </Link>
   )

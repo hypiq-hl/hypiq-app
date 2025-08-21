@@ -402,7 +402,7 @@ export default function UpDownMarketPage() {
                 <Image src={logoUrl} alt="coin" width={40} height={40} className={`${isCondensed ? 'w-8 h-8' : 'w-10 h-10'} object-contain`} />
               </div>
               <h1 className={`${isCondensed ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'} font-bold`}>
-                {capitalizeTitle(market.title)}
+                Whale BTC Long Pozisyonu
               </h1>
             </div>
           </div>
@@ -576,10 +576,13 @@ export default function UpDownMarketPage() {
 
           {/* Rules summary */}
           <div className="mt-8">
-            <h2 className="text-lg font-semibold mb-4">Rules summary</h2>
+            <h2 className="text-lg font-semibold mb-4">Whale Position Rules</h2>
             <Card className="bg-white/5 border border-white/10 p-4">
               <p className="text-sm text-white/80 leading-relaxed mb-4">
-                {marketRules}
+                This market allows betting on how the whale&apos;s Bitcoin Long position will close. 
+                <strong className="text-green-400"> PROFIT (+)</strong> option means the whale closes the position profitably (Bitcoin price rises). 
+                <strong className="text-red-400"> LOSS (-)</strong> option means the whale closes the position at a loss (Bitcoin price falls).
+                Position closing time and price data are sourced from Hyperliquid API.
               </p>
               <div className="flex gap-2">
                 <button className="text-xs text-green-400 hover:text-green-300 transition">
@@ -693,18 +696,29 @@ export default function UpDownMarketPage() {
                 </div>
               </div>
               
-              {/* Up/Down Options */}
+              {/* Whale Position Outcome Options */}
               <div className="mb-4">
+                <div className="text-xs text-white/70 mb-2 text-center">
+                  How will Whale BTC Long position close?
+                </div>
                 <div className="grid grid-cols-2 gap-2 mb-3">
-                  {market.options.map((option, idx) => (
-                    <button 
-                      key={option.name} 
-                      className={`${idx === 0 ? 'bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40' : 'bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40'} rounded-md p-3 text-center transition-colors cursor-pointer`}
-                    >
-                      <div className="text-white font-medium text-sm">{option.name}</div>
-                      <div className={`${idx === 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold text-lg`}>{option.percent}%</div>
-                    </button>
-                  ))}
+                  <button 
+                    className="bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 rounded-md p-3 text-center transition-colors cursor-pointer"
+                  >
+                    <div className="text-emerald-400 font-bold text-lg mb-1">+</div>
+                    <div className="text-white font-medium text-sm">PROFIT</div>
+                    <div className="text-emerald-400 font-bold text-lg">67%</div>
+                  </button>
+                  <button 
+                    className="bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 rounded-md p-3 text-center transition-colors cursor-pointer"
+                  >
+                    <div className="text-rose-400 font-bold text-lg mb-1">-</div>
+                    <div className="text-white font-medium text-sm">LOSS</div>
+                    <div className="text-rose-400 font-bold text-lg">33%</div>
+                  </button>
+                </div>
+                <div className="text-xs text-white/50 text-center">
+                  Bitcoin Long position: Price ↑ = Profit | Price ↓ = Loss
                 </div>
               </div>
 
