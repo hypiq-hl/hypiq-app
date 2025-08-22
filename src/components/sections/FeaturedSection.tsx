@@ -35,7 +35,7 @@ export function FeaturedSection() {
           <CardContent className="p-8 relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <div className="flex-1">
-                <Badge className="mb-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold">
+                <Badge className="mb-4 bg-white backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold">
                   <Sparkles className="h-3 w-3 mr-1" />
                   🔥 Featured Position
                 </Badge>

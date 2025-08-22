@@ -22,16 +22,16 @@ export function Navigation() {
   }
 
   return (
-    <nav className="bg-[#0e241f] border-b border-white/20 sticky top-0 z-50">
+    <nav className="bg-gray-50 border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Left side - Logo and main nav */}
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-3">
               <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
-                <Image src="/HYPIQ-logo-white.png" alt="HYPIQ" width={64} height={64} className="object-contain" />
+                <Image src="/HYPIQ-logo-black.png" alt="HYPIQ" width={64} height={64} className="object-contain" />
               </div>
-              <span className="text-xl font-bold text-white">HYPIQ</span>
+              <span className="text-xl font-bold text-gray-900">HYPIQ</span>
             </Link>
 
 
@@ -46,22 +46,22 @@ export function Navigation() {
               <>
                 {/* Notifications */}
                 <Button variant="ghost" size="sm" className="relative">
-                  <Bell className="h-4 w-4 text-white/70" />
+                  <Bell className="h-4 w-4 text-gray-600" />
                   <div className="absolute -top-1 -right-1 w-2 h-2 bg-kalshi-accent rounded-full"></div>
                 </Button>
 
                 {/* Balance Display */}
-                <div className="flex items-center space-x-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2">
+                <div className="flex items-center space-x-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
                   <DollarSign className="h-4 w-4 text-kalshi-accent" />
-                  <span className="text-sm font-medium text-white">{formatBalance(balance)}</span>
+                  <span className="text-sm font-medium text-gray-900">{formatBalance(balance)}</span>
                 </div>
 
                 {/* Account Menu */}
-                <div className="flex items-center space-x-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2">
+                <div className="flex items-center space-x-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
                   <div className="w-6 h-6 bg-kalshi-accent rounded-full flex items-center justify-center">
                     <User className="h-3 w-3 text-white" />
                   </div>
-                  <span className="text-sm text-white">{formatAddress(address!)}</span>
+                  <span className="text-sm text-gray-900">{formatAddress(address!)}</span>
                 </div>
 
                 {/* Disconnect Button */}
@@ -69,7 +69,7 @@ export function Navigation() {
                   onClick={disconnect}
                   variant="outline" 
                   size="sm"
-                  className="border-red-400/30 text-red-400 hover:bg-red-500/20"
+                  className="border-red-200 text-red-600 hover:bg-red-50"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   Sign out
@@ -77,10 +77,10 @@ export function Navigation() {
               </>
             ) : (
               <>
-                {/* Connect Wallet Button with glassmorphism */}
+                {/* Connect Wallet Button */}
                 <Button 
                   onClick={connect}
-                  className="bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-white shadow-lg"
+                  className="bg-black/60 hover:bg-black/40 border border-white/20 backdrop-blur-sm text-white shadow-lg"
                   size="sm"
                 >
                   <Wallet className="h-4 w-4 mr-2" />
@@ -123,8 +123,8 @@ export function Navigation() {
                   }}
                   className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
                     isActive 
-                      ? 'bg-white/20 border border-white/30 text-white font-semibold ring-1 ring-white/30'
-                      : 'bg-white/10 border border-white/20 text-white/80 hover:bg-white/15'
+                      ? 'bg-[#0e241f] border border-[#0e241f] text-white font-semibold'
+                      : 'bg-gray-100 border border-gray-200 text-gray-700 hover:bg-gray-200'
                   } ${icon ? 'flex items-center gap-1.5' : ''}`}
                 >
                   {icon && <TrendingUp className="h-3 w-3" />}
@@ -135,12 +135,12 @@ export function Navigation() {
           </div>
         ) : (
           <div className="flex items-center gap-3 py-2 overflow-x-auto hide-scrollbar">
-            <span className="px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-xs font-semibold ring-1 ring-white/30 flex items-center gap-1.5">
+            <span className="px-3 py-1 rounded-full bg-[#0e241f] border border-[#0e241f] text-white text-xs font-semibold flex items-center gap-1.5">
               <TrendingUp className="h-3 w-3" />
               TRENDING
             </span>
             {['POLITICS','ECONOMICS','SPORTS','CRYPTO','TECH','HEALTH','WORLD'].map((label) => (
-              <span key={label} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-medium">
+              <span key={label} className="px-3 py-1 rounded-full bg-gray-100 border border-gray-200 text-gray-700 text-xs font-medium">
                 {label}
               </span>
             ))}

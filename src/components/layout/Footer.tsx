@@ -29,46 +29,46 @@ function DiscordIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/20 bg-[#0e241f]">
+    <footer className="border-t border-gray-200 bg-gray-50">
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 items-start">
           {/* Left: Resources */}
           <div className="text-center md:text-left order-2 md:order-1">
-            <h3 className="font-semibold mb-3 md:mb-4 text-white tracking-wide">Resources</h3>
-            <ul className="space-y-1.5 md:space-y-2 text-base md:text-sm text-white/80">
-              <li><a href="https://docs.hypiq.finance" target="_blank" rel="noreferrer" className="block py-1 hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="https://faq.hypiq.finance" target="_blank" rel="noreferrer" className="block py-1 hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="mailto:support@hypiq.finance" className="block py-1 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="https://github.com/hypiq-hl" target="_blank" rel="noreferrer" className="block py-1 hover:text-white transition-colors">GitHub</a></li>
+            <h3 className="font-semibold mb-3 md:mb-4 text-gray-900 tracking-wide">Resources</h3>
+            <ul className="space-y-1.5 md:space-y-2 text-base md:text-sm text-gray-600">
+              <li><a href="https://docs.hypiq.finance" target="_blank" rel="noreferrer" className="block py-1 hover:text-gray-900 transition-colors">Documentation</a></li>
+              <li><a href="https://faq.hypiq.finance" target="_blank" rel="noreferrer" className="block py-1 hover:text-gray-900 transition-colors">FAQ</a></li>
+              <li><a href="mailto:support@hypiq.finance" className="block py-1 hover:text-gray-900 transition-colors">Contact</a></li>
+              <li><a href="https://github.com/hypiq-hl" target="_blank" rel="noreferrer" className="block py-1 hover:text-gray-900 transition-colors">GitHub</a></li>
             </ul>
           </div>
 
           {/* Center: HYPIQ text above, logo below for better visual alignment */}
           <div className="flex flex-col items-center text-center order-1 md:order-2">
-            <span className="font-semibold text-white tracking-wide mb-2 md:mb-3">HYPIQ</span>
+            <span className="font-semibold text-gray-900 tracking-wide mb-2 md:mb-3">HYPIQ</span>
             <div className="w-24 h-24">
-              <Image src="/HYPIQ-logo-white.png" alt="HYPIQ" width={96} height={96} className="object-contain" />
+              <Image src="/HYPIQ-logo-black.png" alt="HYPIQ" width={96} height={96} className="object-contain" />
             </div>
           </div>
 
           {/* Right: Community - center aligned, plain icons */}
           <div className="text-center order-3">
-            <h3 className="font-semibold text-white tracking-wide">Community</h3>
+            <h3 className="font-semibold text-gray-900 tracking-wide">Community</h3>
             <div className="flex justify-center items-center gap-6 mt-3 md:mt-4">
-              <a href="https://x.com/hypiq_fi" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="X (formerly Twitter)">
+              <a href="https://x.com/hypiq_fi" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors" aria-label="X (formerly Twitter)">
                 <XIcon className="h-5 w-5" />
               </a>
-              <a href="https://t.me/hypiq_chat" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Telegram">
+              <a href="https://t.me/hypiq_chat" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors" aria-label="Telegram">
                 <TelegramIcon className="h-5 w-5" />
               </a>
-              <a href="#" className="text-white/80 hover:text-white transition-colors" aria-label="Discord">
+              <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors" aria-label="Discord">
                 <DiscordIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-white/20 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-white/70">
+        <div className="border-t border-gray-200 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-500">
           <p>&copy; 2025 HYPIQ. All rights reserved. Trade responsibly.</p>
         </div>
       </div>

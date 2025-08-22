@@ -66,8 +66,8 @@ const getCryptoBackground = (key: string) => {
     case 'hype':
       return {
         background: `rgba(255, 255, 255, 0.15)`,
-        border: `rgba(255, 255, 255, 0.3)`,
-        backdropFilter: 'blur(10px)'
+        border: `gray`,
+        backdropFilter: 'blur(10px)',
       }
     default:
       return {
@@ -105,7 +105,7 @@ export default function WhaleMarketHeatmap() {
   const getLogoSrc = (key: string) => `/coin-logos/${key}.png`
 
   return (
-    <section className="bg-[#0e241f] text-white py-2">
+    <section className="bg-gray-50 text-gray-900 py-2">
       <div className="container mx-auto px-2 md:px-4">
         <Marquee className="py-1" pauseOnHover repeat={8}>
           {data.map((item) => {
@@ -130,16 +130,16 @@ export default function WhaleMarketHeatmap() {
                       height={16}
                       className={`h-4 w-4 rounded-sm object-contain ${item.key === 'xrp' ? 'invert' : ''}`}
                     />
-                    <span className="text-[11px] font-medium tracking-wide truncate text-white">{item.label}</span>
+                    <span className="text-[11px] font-medium tracking-wide truncate text-gray-900">{item.label}</span>
                   </div>
-                  <span className="text-[10px] text-white/80 tabular-nums">{Math.round(item.intensity)}%</span>
+                  <span className="text-[10px] text-gray-700 tabular-nums">{Math.round(item.intensity)}%</span>
                 </div>
                 <div className="relative mt-1 h-8">
-                  <ChartContainer config={{ trend: { color: '#ffffff' } }} className="h-full w-full">
+                  <ChartContainer config={{ trend: { color: '#374151' } }} className="h-full w-full">
                     <LineChart data={item.series} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
                       <XAxis dataKey="x" hide domain={[0, 15]} />
                       <YAxis hide domain={[0, 100]} />
-                      <Line type="monotone" dataKey="y" stroke="#ffffff" strokeOpacity={0.9} strokeWidth={1.6} dot={false} />
+                      <Line type="monotone" dataKey="y" stroke="#374151" strokeOpacity={0.9} strokeWidth={1.6} dot={false} />
                     </LineChart>
                   </ChartContainer>
                 </div>

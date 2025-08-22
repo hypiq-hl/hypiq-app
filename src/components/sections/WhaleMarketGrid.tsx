@@ -59,7 +59,7 @@ export function WhaleMarketCard({ market }: { market: EventMarket }) {
   
   return (
     <Link href={`/market/${slug}`} className="block">
-      <Card className="relative overflow-hidden bg-white/10 border border-white/20 rounded-lg p-4 text-white hover:bg-white/15 transition h-full">
+      <Card className="relative overflow-hidden bg-white border border-gray-200 rounded-lg p-4 text-gray-900 hover:bg-gray-50 hover:border-[#0e241f]/20 transition h-full shadow-sm hover:shadow-md">
         {/* Header with coin and position type */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
@@ -72,13 +72,13 @@ export function WhaleMarketCard({ market }: { market: EventMarket }) {
             />
             <div>
               <div className="text-base font-bold">{positionInfo.coin} {positionInfo.amount}</div>
-              <div className="text-xs text-white/70">Whale Position</div>
+              <div className="text-xs text-gray-500">Whale Position</div>
             </div>
           </div>
           <div className={`px-2 py-1 rounded text-xs font-bold ${
             positionInfo.isLong 
-              ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-              : 'bg-red-500/20 text-red-400 border border-red-500/30'
+              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
+              : 'bg-red-50 text-red-700 border border-red-200'
           }`}>
             {positionInfo.isLong ? 'LONG' : 'SHORT'}
           </div>
@@ -94,27 +94,27 @@ export function WhaleMarketCard({ market }: { market: EventMarket }) {
                   <span className={`text-lg font-bold ${isProfit ? 'text-green-400' : 'text-red-400'}`}>
                     {isProfit ? '+' : '-'}
                   </span>
-                  <span className="text-sm text-white/90">{isProfit ? 'Profit' : 'Lose'}</span>
+                  <span className="text-sm text-gray-700">{isProfit ? 'Profit' : 'Lose'}</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <Progress
                       value={opt.percent}
-                      className={`h-2 bg-white/10 ${isProfit ? ' [&>div]:from-emerald-500 [&>div]:to-emerald-400' : ' [&>div]:from-red-500 [&>div]:to-rose-400'}`}
+                      className={`h-2 bg-gray-200 ${isProfit ? ' [&>div]:from-emerald-500 [&>div]:to-emerald-400' : ' [&>div]:from-red-500 [&>div]:to-rose-400'}`}
                     />
-                    <span className="text-sm font-semibold tabular-nums w-10 text-right">{opt.percent}%</span>
+                    <span className="text-sm font-semibold tabular-nums w-10 text-right text-gray-900">{opt.percent}%</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Button size="sm" className="h-7 px-3 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300">Yes</Button>
-                  <Button size="sm" className="h-7 px-3 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-300">No</Button>
+                  <Button size="sm" className="h-7 px-3 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700">Yes</Button>
+                  <Button size="sm" className="h-7 px-3 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700">No</Button>
                 </div>
               </div>
             )
           })}
         </div>
 
-        <div className="mt-4 text-xs text-white/60">
+        <div className="mt-4 text-xs text-gray-500">
           ${market.volume.toLocaleString()}
         </div>
 
@@ -147,11 +147,22 @@ export default function WhaleMarketGrid() {
   const ACTIVE_IDS = useMemo(() => new Set(['w1', 'w2', 'w3']), [])
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-[#0e241f]">
+    <section className="py-8 bg-gray-50">
+      {/* Section Header */}
+      <div className="container mx-auto px-4 mb-8">
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full shadow-sm">
+            <div className="w-2 h-2 bg-[#0e241f] rounded-full"></div>
+            <span className="text-sm font-bold tracking-[2px] text-gray-900 uppercase">WHALE MARKETS</span>
+            <div className="w-2 h-2 bg-[#0e241f] rounded-full"></div>
+          </div>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 py-8 bg-gray-50">
       {filtered.length === 0 ? (
         <div className="text-center py-12">
-          <div className="text-white/60 text-lg">No bets available for this category</div>
-          <div className="text-white/40 text-sm mt-2">Try selecting a different category</div>
+          <div className="text-gray-600 text-lg">No bets available for this category</div>
+          <div className="text-gray-500 text-sm mt-2">Try selecting a different category</div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-0">
@@ -164,10 +175,10 @@ export default function WhaleMarketGrid() {
               </div>
               {!isActive && (
                 <div className="pointer-events-auto absolute inset-0 rounded-lg overflow-hidden cursor-not-allowed z-0">
-                  <div className="absolute inset-0 rounded-lg bg-white/10 backdrop-blur-md" />
+                  <div className="absolute inset-0 rounded-lg bg-gray-100/80 backdrop-blur-md" />
                   <div className="relative h-full flex items-center justify-center">
                     <div className="rotate-[-12deg] translate-x-2">
-                      <span className="px-4 py-1 rounded-md border border-white/20 bg-white/10 text-white/80 text-2xl md:text-3xl font-extrabold tracking-[0.3em] shadow-white/10 shadow-md">
+                      <span className="px-4 py-1 rounded-md border border-[#0e241f]/20 bg-[#0e241f]/10 text-black/70 text-2xl md:text-3xl font-extrabold tracking-[0.3em] shadow-lg">
                         SOON
                       </span>
                     </div>
@@ -178,7 +189,8 @@ export default function WhaleMarketGrid() {
           )})}
         </div>
       )}
-    </div>
+      </div>
+    </section>
   )
 }
 

@@ -6,11 +6,11 @@ import WhaleMarketGrid from '@/components/sections/WhaleMarketGrid'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0e241f] text-white brightness-110 contrast-110">
+    <div className="min-h-screen bg-white text-gray-900">
       <Navigation />
       <main>
         {/* Featured Whale Market */}
-        <section className="py-10 md:py-12 bg-[#0e241f]">
+        <section className="py-10 md:py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <WhaleMarketFeaturedCard />
           </div>
