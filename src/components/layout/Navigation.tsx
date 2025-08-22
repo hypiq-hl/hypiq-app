@@ -27,11 +27,10 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between">
           {/* Left side - Logo and main nav */}
           <div className="flex items-center space-x-8">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
-                <Image src="/HYPIQ-logo-black.png" alt="HYPIQ" width={64} height={64} className="object-contain" />
+            <Link href="/" className="flex items-center">
+              <div className="w-14 h-14 flex items-center justify-center">
+                <Image src="/whale-tail.png" alt="HYPIQ" width={56} height={56} className="object-contain" />
               </div>
-              <span className="text-xl font-bold text-gray-900">HYPIQ</span>
             </Link>
 
 

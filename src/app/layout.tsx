@@ -6,11 +6,11 @@ import { WalletProvider } from '@/contexts/WalletContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'HYPIQ - Prediction Markets',
+  title: 'Whale Prediction Markets',
   description: 'Advanced prediction markets platform. Trade on whale positions and crypto outcomes. predict/earn.',
   icons: {
-    icon: '/HYPIQ-logo-white-vector.svg',
-    apple: '/HYPIQ-logo-white-vector.svg',
+    icon: '/whale-tail.png',
+    apple: '/whale-tail.png',
   },
 }
 
@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>HYPIQ - Prediction Markets</title>
+        <title>Whale Prediction Markets</title>
         <meta name="description" content="Advanced prediction markets platform. Trade on whale positions and crypto outcomes. predict/earn." />
-        <link rel="icon" href="/HYPIQ-logo-white-vector.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/HYPIQ-logo-white-vector.svg" />
+        <link rel="icon" href="/whale-tail.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/whale-tail.png" />
       </head>
       <body className={inter.className}>
         <WalletProvider>

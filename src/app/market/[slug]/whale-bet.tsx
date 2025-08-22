@@ -349,7 +349,7 @@ export default function UpDownMarketPage() {
     return null
   }
   const logoKey = useMemo(() => getLogoKeyFromTitle(marketTitle), [marketTitle])
-  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market?.imageUrl || '/hypiq-logo.jpeg')
+  const logoUrl = logoKey ? `/coin-logos/${logoKey}.png` : (market?.imageUrl || '/whale-tail.png')
 
   // Sticky title bar behavior
   const HEADER_OFFSET = 104

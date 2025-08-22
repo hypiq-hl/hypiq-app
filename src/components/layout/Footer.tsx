@@ -43,11 +43,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Center: HYPIQ text above, logo below for better visual alignment */}
+          {/* Center: Minimal logo only */}
           <div className="flex flex-col items-center text-center order-1 md:order-2">
-            <span className="font-semibold text-gray-900 tracking-wide mb-2 md:mb-3">HYPIQ</span>
-            <div className="w-24 h-24">
-              <Image src="/HYPIQ-logo-black.png" alt="HYPIQ" width={96} height={96} className="object-contain" />
+            <div className="w-20 h-20">
+              <Image src="/whale-tail.png" alt="HYPIQ" width={80} height={80} className="object-contain" />
             </div>
           </div>
 
